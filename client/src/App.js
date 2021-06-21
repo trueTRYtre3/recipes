@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import recipeService from './services/recipeService';
 import Header from './components/Header'
 import './App.css';
@@ -12,6 +13,9 @@ const App = () => {
   return(
     <div>
       <Header />
+      <Switch>
+        <Route path='/' exact component={} />
+      </Switch>
       <div className='container'>
         Hello
       </div>
