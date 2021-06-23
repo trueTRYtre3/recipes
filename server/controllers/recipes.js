@@ -5,7 +5,7 @@ const config = require('../utils/config')
 
 
 recipeRouter.get('/', async (request,response) => {
-    const res = await axios.get(config.URL)
+    const res = await axios.get(`${config.URL}&q=chicken`)
     response.json(res.data)
 })
 
