@@ -7,4 +7,9 @@ const getAll = async () => {
     return request
 }
 
-export default { getAll }
+const getJSON = async () => {
+    const request = await axios.get(`${baseURL}/json`)
+    return request.data
+}
+
+export default { getAll, getJSON }
