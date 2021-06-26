@@ -1,35 +1,22 @@
-import React, { useState } from 'react'
-import { Button, Dropdown, Menu } from 'semantic-ui-react'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Nav, Navbar, Button } from 'react-bootstrap'
 
 const Header = () => {
-    const [activeItem, setActiveItem] = useState('home')
 
     return (
         <div>
-            <Menu pointing secondary>
-                <Menu.Item
-                    name='home'
-                    active={activeItem === 'home'}
-                    onClick={() => setActiveItem('home')}
-                />
-                <Menu.Item
-                    name='messages'
-                    active={activeItem === 'messages'}
-                    onClick={() => setActiveItem('messages')}
-                />
-                <Menu.Item
-                    name='friends'
-                    active={activeItem === 'friends'}
-                    onClick={() => setActiveItem('friends')}
-                />
-                <Menu.Menu position='right'>
-                    <Menu.Item
-                    name='logout'
-                    active={activeItem === 'logout'}
-                    onClick={() => setActiveItem('logout')}
-                    />
-                </Menu.Menu>
-            </Menu>
+            <Navbar bg="dark" variant="dark">
+                <Navbar.Brand href="#home">Global Menu</Navbar.Brand>
+                <Nav className="mr-auto">
+                    <Nav.Link as={Link} to='/'>Home</Nav.Link>
+                    <Nav.Link as={Link} to='/'>Cuisines</Nav.Link>
+                    <Nav.Link as={Link} to='/'>Meal Types</Nav.Link>
+                </Nav>
+                {/* <Form inline>
+                    <Button variant="outline-info">Sign In</Button>
+                </Form> */}
+            </Navbar> 
         </div>
     )
 }
