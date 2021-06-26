@@ -4,7 +4,7 @@ import { Carousel } from 'react-bootstrap';
 const Main = () => {
     return (
         <div>
-            <h1>Recommended items</h1>
+            <h1>Fun food recommendations</h1>
             <Carousel>
                 <Carousel.Item>
                     <img
@@ -42,6 +42,7 @@ const Main = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+            Search here
         </div>
     );
 }
