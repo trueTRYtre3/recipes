@@ -7,10 +7,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
-  // useEffect(async () => {
-    // const response = await recipeService.getAll()
-    // console.log(response)
-  // })
+  useEffect(async () => {
+    const response = await recipeService.getAll()
+    console.log(response)
+  })
 
   useEffect(async () => {
     const response = await recipeService.getJSON()
@@ -20,7 +20,7 @@ const App = () => {
   return(
     <div>
       <Header />
-      <div class='container'>
+      <div className='container'>
         <br />
         <Switch>
           <Route path='/' exact component={Main} />

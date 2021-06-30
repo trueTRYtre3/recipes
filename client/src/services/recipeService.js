@@ -4,7 +4,7 @@ const baseURL = '/api/recipes'
 
 const getAll = async () => {
     const request = await axios.get(baseURL)
-    return request
+    return request.data
 }
 
 const getJSON = async () => {

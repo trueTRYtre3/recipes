@@ -5,7 +5,7 @@ const Main = () => {
     return (
         <div>
             <h1>Fun food recommendations</h1>
-            <Carousel>
+            {/* <Carousel>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
@@ -41,7 +41,7 @@ const Main = () => {
                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-            </Carousel>
+            </Carousel> */}
             Search here
         </div>
     );
