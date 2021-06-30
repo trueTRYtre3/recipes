@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import recipeService from './services/recipeService';
+import { useDispatch } from 'react-redux';
+import { retrieveParams } from './reducers/recipeParamsReducer';
+import { initialRecipes  } from './reducers/recipeReducer';
 import Header from './components/Header'
 import Main from './components/Main'
+import Cuisines from './components/Cuisines';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
+  const dispatch = useDispatch()
+
   useEffect(async () => {
-    const response = await recipeService.getAll()
-    console.log(response)
+    dispatch(initialRecipes())
   })
 
   useEffect(async () => {
-    const response = await recipeService.getJSON()
-    console.log(response.cuisineType)
+      dispatch(retrieveParams())
   })
 
   return(
@@ -24,6 +27,7 @@ const App = () => {
         <br />
         <Switch>
           <Route path='/' exact component={Main} />
+          <Route path='/cuisines' component={Cuisines} />
         </Switch>
       </div>
     </div>

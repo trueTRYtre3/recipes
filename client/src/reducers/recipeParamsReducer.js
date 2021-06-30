@@ -12,19 +12,11 @@ export const retrieveParams = () => async dispatch => {
     }
 }
 
-export const retrieveCategory = category => dispatch => {
-    dispatch({
-        type: 'CATEGORY',
-        data: category
-    })
-}
 
 const reducer = (state=[], action) => {
     switch (action.type) {
         case 'ALL_PARAMS':
             return action.data
-        case 'CATEGORY':
-            return state.action.data
         default:
             return state
     }

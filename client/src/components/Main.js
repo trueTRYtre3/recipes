@@ -1,7 +1,14 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Carousel } from 'react-bootstrap';
 
 const Main = () => {
+    const params = useSelector(state => state.params)
+    const recipes = useSelector(state => state.recipes)
+
+    console.log('params', params)
+    console.log('recipes', recipes)
+
     return (
         <div>
             <h1>Fun food recommendations</h1>

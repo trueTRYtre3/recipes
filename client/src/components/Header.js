@@ -10,7 +10,7 @@ const Header = () => {
                 <Navbar.Brand href="#home">Global Menu</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
-                    <Nav.Link as={Link} to='/'>Cuisines</Nav.Link>
+                    <Nav.Link as={Link} to='/cuisines'>Cuisines</Nav.Link>
                     <Nav.Link as={Link} to='/'>Meal Types</Nav.Link>
                 </Nav>
                 {/* <Form inline>
