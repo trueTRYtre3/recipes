@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(async () => {
     const response = await recipeService.getJSON()
-    console.log(response)
+    console.log(response.cuisineType)
   })
 
   return(

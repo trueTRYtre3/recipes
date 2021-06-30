@@ -1,13 +1,33 @@
 import recipeService from '../services/recipeService';
 
-export const retrieveParams = (category) => {
-    return async dispatch => {
-        try {
-            const response = await recipeService.getJSON()
-            dispatch({
-                type: 'ALL_PARAMS',
-                action: response.category
-            })
-        }
+export const retrieveParams = () => async dispatch => {
+    try {
+        const response = await recipeService.getJSON()
+        dispatch({
+            type: 'ALL_PARAMS',
+            data: response
+        })
+    } catch (exception) {
+        console.log(exception)
     }
 }
+
+export const retrieveCategory = category => dispatch => {
+    dispatch({
+        type: 'CATEGORY',
+        data: category
+    })
+}
+
+const reducer = (state=[], action) => {
+    switch (action.type) {
+        case 'ALL_PARAMS':
+            return action.data
+        case 'CATEGORY':
+            return state.action.data
+        default:
+            return state
+    }
+}
+
+export default reducer
