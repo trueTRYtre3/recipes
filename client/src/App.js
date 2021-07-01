@@ -12,9 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   const dispatch = useDispatch()
 
-  useEffect(async () => {
-    dispatch(initialRecipes())
-  })
+  // useEffect(async () => {
+  //   dispatch(initialRecipes())
+  // })
 
   useEffect(async () => {
       dispatch(retrieveParams())
