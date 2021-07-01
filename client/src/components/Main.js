@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { Carousel } from 'react-bootstrap';
+// import { Carousel } from 'react-bootstrap';
+import Search from './RecipeTypes/Search';
 
 const Main = () => {
     const params = useSelector(state => state.params)
@@ -50,6 +51,7 @@ const Main = () => {
                 </Carousel.Item>
             </Carousel> */}
             Search here
+            <Search />
         </div>
     );
 }
