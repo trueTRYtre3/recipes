@@ -11,26 +11,7 @@ const Cuisines = () => {
             <h2>Different Cuisines</h2>
             <p>~Choose one cuisine type~</p>
             <br />
-            {cuisineType && 
-            <Grid>
-                {cuisineType}
-            </Grid>
-                // <Container>
-                //     <Row>
-                //         {cuisineType.map(type => (
-                //             <Col xs={4} style={{ paddingBottom: '1%' }} key={type}>
-                //                 <Col style={{ display: 'flex', justifyContent: 'center' }}>
-                //                     <Form>
-                //                         <Button variant="outline-info" type='submit' size="lg">
-                //                             {type}
-                //                         </Button>
-                //                     </Form>
-                //                 </Col>
-                //             </Col>
-                //         ))}
-                //     </Row>
-                // </Container>
-            }
+            {cuisineType && <Grid>{cuisineType}</Grid>}
         </div>
     );
 }

@@ -6,6 +6,8 @@ import { initialRecipes  } from './reducers/recipeReducer';
 import Header from './components/Header'
 import Main from './components/Main'
 import Cuisines from './components/RecipeTypes/Cuisines';
+import Dishes from './components/RecipeTypes/Dishes';
+import Meals from './components/RecipeTypes/Meals';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,6 +30,8 @@ const App = () => {
         <Switch>
           <Route path='/' exact component={Main} />
           <Route path='/cuisines' component={Cuisines} />
+          <Route path='/meals' component={Meals} />
+          <Route path='/dishes' component={Dishes} />
         </Switch>
       </div>
     </div>

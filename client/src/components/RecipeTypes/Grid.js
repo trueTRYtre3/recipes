@@ -6,7 +6,7 @@ const Grid = (props) => {
         <Container>
             <Row>
                 {props.children.map(type => (
-                    <Col xs={4} style={{ paddingBottom: '1%' }} key={type}>
+                    <Col xs={4} style={{ paddingBottom: '2%' }} key={type}>
                         <Col style={{ display: 'flex', justifyContent: 'center' }}>
                             <Form>
                                 <Button variant="outline-info" type='submit' size="lg">
