@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 
@@ -15,8 +15,8 @@ const Cuisines = () => {
                     <Row>
                         {/* <Form> */}
                         {cuisineType.map(type => (
-                            <Col xs={4} style={{ paddingBottom: '1%' }} >
-                                <Col key={type} style={{ display: 'flex', justifyContent: 'center' }}>
+                            <Col xs={4} style={{ paddingBottom: '1%' }} key={type}>
+                                <Col style={{ display: 'flex', justifyContent: 'center' }}>
                                     <Form>
                                         <Button variant="outline-info" type='submit' size="lg">
                                             {type}
