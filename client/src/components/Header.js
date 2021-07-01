@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Nav, Navbar, Button } from 'react-bootstrap'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 const Header = () => {
 
@@ -10,8 +10,11 @@ const Header = () => {
                 <Navbar.Brand href="#home">Global Menu</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
-                    <Nav.Link as={Link} to='/cuisines'>Cuisines</Nav.Link>
-                    <Nav.Link as={Link} to='/'>Meal Types</Nav.Link>
+                    <NavDropdown title="Types" id="collasible-nav-dropdown">
+                        <NavDropdown.Item as={Link} to='/cuisines'>Cuisines</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">Meals</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">Dishes</NavDropdown.Item>
+                    </NavDropdown>
                 </Nav>
                 {/* <Form inline>
                     <Button variant="outline-info">Sign In</Button>

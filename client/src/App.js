@@ -5,7 +5,7 @@ import { retrieveParams } from './reducers/recipeParamsReducer';
 import { initialRecipes  } from './reducers/recipeReducer';
 import Header from './components/Header'
 import Main from './components/Main'
-import Cuisines from './components/Cuisines';
+import Cuisines from './components/RecipeTypes/Cuisines';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
