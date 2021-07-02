@@ -18,6 +18,12 @@ const Search = () => {
 
     if (!mealType) return null
 
+
+    const sendRequest = (e) => {
+        e.preventDefault()
+
+    }
+
     const changeCheckBox = (text, state, changeState) => {
         if (!state[text]) {
             state[text] = true
@@ -27,17 +33,15 @@ const Search = () => {
         changeState({...state})
     }
 
-    console.log('health', healthParams)
-
     return (
-        <Form>
+        <Form onSubmit={}>
             <Form.Row>
-                    <Col md={10}>
-                        <Form.Control placeholder="Search Food" />
-                    </Col>
-                    <Col>
-                        <Button variant="primary" type="submit">Submit</Button>
-                    </Col>
+                <Col md={10}>
+                    <Form.Control placeholder="Search Food" />
+                </Col>
+                <Col>
+                    <Button variant="primary" type="submit">Submit</Button>
+                </Col>
             </Form.Row>
             <Button variant="link"  style={{ marginBottom: '1%' }} onClick={() => changeShow(!show)}>Advanced Search</Button>
             <fieldset style={style}>
