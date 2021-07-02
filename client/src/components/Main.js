@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-// import { Carousel } from 'react-bootstrap';
+import { Carousel, Jumbotron, Container } from 'react-bootstrap';
 import Search from './RecipeTypes/Search';
 
 const Main = () => {
@@ -50,8 +50,12 @@ const Main = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel> */}
-            Search here
-            <Search />
+            <Jumbotron>
+                <Container>
+                    <h1>Find a Recipe</h1>
+                    <Search />
+                </Container>
+            </Jumbotron>
         </div>
     );
 }

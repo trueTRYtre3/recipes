@@ -13,7 +13,7 @@ export const retrieveParams = () => async dispatch => {
 }
 
 
-const reducer = (state=[], action) => {
+const reducer = (state={}, action) => {
     switch (action.type) {
         case 'ALL_PARAMS':
             return action.data
