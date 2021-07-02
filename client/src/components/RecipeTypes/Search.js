@@ -4,16 +4,31 @@ import { useSelector } from 'react-redux'
 
 
 
+
 const Search = () => {
-    const { mealType, cuisineType, dishType, health } = useSelector(state => state.params)
+    const { mealType, cuisineType, dishType, health, diet } = useSelector(state => state.params)
     const [key, setKey] = useState('home')
     const [meal, changeMeal] = useState('')
+    const [cuisine, changeCuisine] = useState('')
+    const [dish, changeDish] = useState('')
+    const [healthParams, changehealthParams] = useState({})
+    const [dietParams, changeDietParams] = useState({})
     const [show, changeShow] = useState(false)
     const style = { display: show ? '' : 'none' }
 
     if (!mealType) return null
 
-    console.log('meal', meal)
+    const changeCheckBox = (text, state, changeState) => {
+        if (!state[text]) {
+            state[text] = true
+        } else {
+            delete state[text]
+        }
+        changeState({...state})
+    }
+
+    console.log('health', healthParams)
+
     return (
         <Form>
             <Form.Row>
@@ -37,50 +52,57 @@ const Search = () => {
                         key={meal}
                         type="radio"
                         label={meal}
-                        name='meal'
+                        name={`${mealType}`}
                         id={`form${meal}`}
                         onClick={() => changeMeal(meal)}
                     />
                     ))}
                 </Tab>
                 <Tab eventKey="cuisine" title="Cuisine Type">
-                    <Form.Group>
-                        {cuisineType.map(cuisine => (
-                        <Form.Check
-                            key={cuisine}
-                            type="radio"
-                            label={cuisine}
-                            name='cuisine'
-                            id={`form${cuisine}`}
-                        />
-                        ))}
-                    </Form.Group>
+                    {cuisineType.map(cuisine => (
+                    <Form.Check
+                        key={cuisine}
+                        type="radio"
+                        label={cuisine}
+                        name='cuisine'
+                        id={`form${cuisine}`}
+                        onClick={() => changeCuisine(cuisine)}
+                    />
+                    ))}
                 </Tab>
                 <Tab eventKey="dish" title="Dish Type">
-                    <Form.Group>
-                        {dishType.map(dish => (
-                        <Form.Check
-                            key={dish}
-                            type="radio"
-                            label={dish}
-                            name='dish'
-                            id={`form${dish}`}
-                        />
-                        ))}
-                    </Form.Group>
+                    {dishType.map(dish => (
+                    <Form.Check
+                        key={dish}
+                        type="radio"
+                        label={dish}
+                        name='dish'
+                        id={`form${dish}`}
+                        onClick={() => changeDish(dish)}
+                    />
+                    ))}
                 </Tab>
-                <Tab eventKey="health" title="Health Type">
-                    <Form.Group>
+                <Tab eventKey="health" title="Health">
                     {health.map(h => (
                     <Form.Check
                         key={h}
                         type="checkbox"
                         label={h}
-                        name="formHorizontalRadios"
                         id={`form${h}`}
+                        onClick={() => changeCheckBox(h, healthParams, changehealthParams)}
                     />
                     ))}
-                    </Form.Group>
+                </Tab>
+                <Tab eventKey="diet" title="Diet">
+                    {diet.map(d => (
+                    <Form.Check
+                        key={d}
+                        type="checkbox"
+                        label={d}
+                        id={`form${d}`}
+                        onClick={() => changeCheckBox(d, dietParams, changeDietParams)}
+                    />
+                    ))}
                 </Tab>
             </Tabs>
             </fieldset> 
