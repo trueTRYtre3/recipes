@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { retrieveParams } from './reducers/recipeParamsReducer';
-import { initialRecipes  } from './reducers/recipeReducer';
+import { recommendedFoods  } from './reducers/recipeReducer';
 import Header from './components/Header'
 import Main from './components/Main'
 import Cuisines from './components/RecipeTypes/Cuisines';
@@ -13,10 +13,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const dispatch = useDispatch()
+  const foods = ["pizza", "chicken", "pasta", "pork", "udon"]
 
-  // useEffect(async () => {
-  //   dispatch(initialRecipes())
-  // })
+  useEffect(async () => {
+    let food = foods[Math.floor(Math.random() * foods.length)]
+    console.log(food)
+    dispatch(recommendedFoods(food))
+  })
 
   useEffect(async () => {
       dispatch(retrieveParams())

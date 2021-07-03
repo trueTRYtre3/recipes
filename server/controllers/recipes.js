@@ -13,5 +13,11 @@ recipeRouter.get('/', async (request,response) => {
 recipeRouter.get('/json', (request, response) => response.json(data))
 
 
+recipeRouter.get('/:item', async (request, response) => {
+    const recipe = await axios.get(`${config.URL}&q=${request.params.item}`)
+    recipe ? response.json(recipe.data) : response.status(404).end()
+})
+
+
 
 module.exports = recipeRouter

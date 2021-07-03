@@ -4,10 +4,8 @@ import { Carousel, Jumbotron, Container } from 'react-bootstrap';
 import Search from './RecipeTypes/Search';
 
 const Main = () => {
-    const params = useSelector(state => state.params)
     const recipes = useSelector(state => state.recipes)
 
-    console.log('params', params)
     console.log('recipes', recipes)
 
     return (

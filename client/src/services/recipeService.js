@@ -3,13 +3,19 @@ const baseURL = '/api/recipes'
 
 
 const getAll = async () => {
-    const request = await axios.get(baseURL)
-    return request.data
+    const response = await axios.get(baseURL)
+    return response.data
 }
 
 const getJSON = async () => {
-    const request = await axios.get(`${baseURL}/json`)
-    return request.data
+    const response = await axios.get(`${baseURL}/json`)
+    return response.data
 }
 
-export default { getAll, getJSON }
+const getRecommendedFood = async item => {
+    const response = await axios.get(`${baseURL}/${item}`)
+    console.log('recommend', response)
+    return response
+}
+
+export default { getAll, getJSON, getRecommendedFood }
