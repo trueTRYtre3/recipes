@@ -16,9 +16,9 @@ const Header = () => {
                         <NavDropdown.Item as={Link} to='/dishes'>Dishes</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
-                {/* <Form inline>
-                    <Button variant="outline-info">Sign In</Button>
-                </Form> */}
+                <Nav>
+                    <Nav.Link >Sign In</Nav.Link>
+                </Nav>
             </Navbar> 
         </div>
     )
