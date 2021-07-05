@@ -17,7 +17,6 @@ const App = () => {
 
   useEffect(async () => {
     let food = foods[Math.floor(Math.random() * foods.length)]
-    console.log(food)
     dispatch(recommendedFoods(food))
   })
 

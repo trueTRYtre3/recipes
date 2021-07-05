@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Col, Tabs, Tab } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import recipeService from '../../services/recipeService'
 
 
 
@@ -30,9 +31,9 @@ const Search = () => {
     }
 
 
-    const sendRequest = (e) => {
+    const sendRequest = async (e) => {
         e.preventDefault()
-        let uri = ''
+        let uri = `&q=${query}`
         if (meal) {
             uri += `&mealType=${meal}`
         }
@@ -48,8 +49,13 @@ const Search = () => {
         if (Object.keys(dietParams).length) {
             Object.keys(dietParams).forEach((key) => uri+=`&diet=${key}`)
         }
-        uri += `&q=${query}`
-        console.log(uri)
+        try {
+            const data = await recipeService.getSearchFood(uri)
+            console.log(data)
+            resetStates()
+        } catch (exception) {
+            console.log(exception)
+        }
     }
 
     const changeCheckBox = (text, state, changeState) => {

@@ -13,11 +13,16 @@ recipeRouter.get('/', async (request,response) => {
 recipeRouter.get('/json', (request, response) => response.json(data))
 
 
-recipeRouter.get('/:item', async (request, response) => {
+recipeRouter.get('/recommended/:item', async (request, response) => {
     const recipe = await axios.get(`${config.URL}&q=${request.params.item}`)
     recipe ? response.json(recipe.data) : response.status(404).end()
 })
 
+recipeRouter.get('/search/:uri', async (request, response) => {
+    const { uri }  = request.params
+    const recipe = await axios.get(`${config.URL}${uri}`)
+    recipe ? response.json(recipe.data) : response.status(404).end()
+})
 
 
 module.exports = recipeRouter

@@ -13,8 +13,13 @@ const getJSON = async () => {
 }
 
 const getRecommendedFood = async item => {
-    const response = await axios.get(`${baseURL}/${item}`)
+    const response = await axios.get(`${baseURL}/recommended/${item}`)
     return response.data
 }
 
-export default { getAll, getJSON, getRecommendedFood }
+const getSearchFood = async uri => {
+    const response = await axios.get(`${baseURL}/search/${uri}`)
+    return response.data
+}
+
+export default { getAll, getJSON, getRecommendedFood, getSearchFood }
