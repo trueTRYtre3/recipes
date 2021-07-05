@@ -14,8 +14,7 @@ const getJSON = async () => {
 
 const getRecommendedFood = async item => {
     const response = await axios.get(`${baseURL}/${item}`)
-    console.log('recommend', response)
-    return response
+    return response.data
 }
 
 export default { getAll, getJSON, getRecommendedFood }
