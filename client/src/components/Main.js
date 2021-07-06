@@ -35,7 +35,6 @@ const Main = () => {
                                 style={{ textAlign: 'left', overflowWrap: 'break-word', inlineSize: '150px', marginTop: '40px' }}>
                                     <h2>{el.recipe.label}</h2>
                                     <Button onClick={() => dispatch(grabFood(el))} as={Link} to='/food'>
-                                        {/* <Link to='/food' style={{ : 'white' }}>See Recipe</Link> */}
                                         See Recipe
                                     </Button>
                             </Col>
