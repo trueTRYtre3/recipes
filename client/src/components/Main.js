@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { Carousel, Jumbotron, Container, Col, Image, Row, Button } from 'react-bootstrap';
 import Search from './RecipeTypes/Search';
-import { Link } from 'react-router-dom';
-import { recommendedFoods } from '../reducers/recipeReducer';
+import { grabFood } from '../reducers/foodReducer';
 
 const Main = () => {
     const dispatch = useDispatch()
@@ -35,7 +34,10 @@ const Main = () => {
                             <Col 
                                 style={{ textAlign: 'left', overflowWrap: 'break-word', inlineSize: '150px', marginTop: '40px' }}>
                                     <h2>{el.recipe.label}</h2>
-                                    <Button onClick={() => dispatch()}>See Recipe</Button>
+                                    <Button onClick={() => dispatch(grabFood(el))} as={Link} to='/food'>
+                                        {/* <Link to='/food' style={{ : 'white' }}>See Recipe</Link> */}
+                                        See Recipe
+                                    </Button>
                             </Col>
                         </Row>
                     </Carousel.Item>
