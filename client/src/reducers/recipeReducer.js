@@ -1,11 +1,11 @@
 import recipeService from "../services/recipeService"
 
-export const initialRecipes = () => {
+export const getRecipes = () => {
     return async dispatch => {
         try {
-            const response = await recipeService.getAll()
+            const response = await recipeService.getRecipe()
             dispatch({
-                type: 'INITIAL',
+                type: 'SINGLE',
                 data: response
             })
         } catch (exception) {

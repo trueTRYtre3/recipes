@@ -2,7 +2,7 @@ import axios from 'axios'
 const baseURL = '/api/recipes'
 
 
-const getAll = async () => {
+const getRecipe = async () => {
     const response = await axios.get(baseURL)
     return response.data
 }
@@ -22,4 +22,4 @@ const getSearchFood = async uri => {
     return response.data
 }
 
-export default { getAll, getJSON, getRecommendedFood, getSearchFood }
+export default { getRecipe, getJSON, getRecommendedFood, getSearchFood }

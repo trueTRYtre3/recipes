@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import Grid from './Grid'
 
 const Cuisines = () => {
