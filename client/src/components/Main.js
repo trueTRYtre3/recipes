@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { Carousel, Jumbotron, Container, Col, Image, Row, Button } from 'react-bootstrap';

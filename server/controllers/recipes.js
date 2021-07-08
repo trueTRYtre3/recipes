@@ -5,9 +5,11 @@ const data = require('../htmlscraper/params.json')
 
 
 
-recipeRouter.get('/', async (request,response) => {
-    const res = await axios.get(`${config.URL}&q=chicken`)
-    response.json(res.data)
+recipeRouter.get('/recipe/:uri', async (request,response) => {
+    const uri = request.params.uri
+    console.log('params', uri)
+    const food = await axios.get(`${request.params.uri}`)
+    food ? response.json(food.data) : response.status(404).end()
 })
 
 recipeRouter.get('/json', (request, response) => response.json(data))

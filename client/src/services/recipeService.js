@@ -2,8 +2,9 @@ import axios from 'axios'
 const baseURL = '/api/recipes'
 
 
-const getRecipe = async () => {
-    const response = await axios.get(baseURL)
+const getRecipe = async uri => {
+    const response = await axios.get(`${baseURL}/recipe/${uri}`)
+    console.log('response', response)
     return response.data
 }
 

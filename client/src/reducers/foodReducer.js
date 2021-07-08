@@ -1,5 +1,6 @@
+import recipeService from "../services/recipeService"
 
-export const grabFood = food => dispatch => {
+export const grabFood = food => async dispatch => {
     dispatch({
         type: 'FOOD',
         data: food
