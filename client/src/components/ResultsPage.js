@@ -21,15 +21,15 @@ const ResultsPage = () => {
                             style={{ float: 'right', marginRight: '25px' }}
                         />
                     </Col>
-                    <Col style={{ textAlign: 'center', overflowWrap: 'break-word', inlineSize: '140px', marginTop: '40px' }}>
+                    <Col style={{ textAlign: 'left', overflowWrap: 'break-word', inlineSize: '140px', marginTop: '40px' }}>
                         <h2>{recipe.label}</h2>
                         <Button>Save Recipe</Button>
                         <Button style={{ display: 'block', marginTop: '5px'}} variant='success'>Get Recipe</Button>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                        <Row style={{ borderBottom: "1px solid black", width: '40%' }}>
+                    <Col style={{ margin: 'auto'}}>
+                        <Row style={{ borderBottom: "2px solid grey", width: '50%' }}>
                             <h3>{recipe.ingredientLines.length} Ingredients</h3>
                         </Row>
                         {recipe.ingredients.map((ingredient, i) => (
@@ -39,8 +39,17 @@ const ResultsPage = () => {
                         ))}
                     </Col>
                     <Col>
-                        <Row style={{ borderBottom: "1px solid black", width: '40%' }}>
+                        <Row style={{ borderBottom: "2px solid grey", width: '40%' }}>
                             <h3>Nutrition</h3>
+                        </Row>
+                        <Row style={{ borderBottom: "1px solid black", width: '40%'}}>
+                            <Col>
+                                {recipe.calories/recipe.yield}
+                                <p>CALORIES/SERVING</p>
+                            </Col>
+                            <Col>
+                                <p>{recipe.yield} servings</p>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>
