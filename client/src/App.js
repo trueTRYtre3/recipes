@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { retrieveParams } from './reducers/recipeParamsReducer';
 import { recommendedFoods  } from './reducers/recipeReducer';
+import { foodStorage } from './reducers/foodReducer';
 import Header from './components/Header'
 import Main from './components/Main'
 import Cuisines from './components/RecipeTypes/Cuisines';
@@ -17,13 +18,17 @@ const App = () => {
   const dispatch = useDispatch()
   const foods = ["pizza", "chicken", "pasta", "pork", "udon"]
 
-  useEffect(async () => {
+  useEffect(() => {
     let food = foods[Math.floor(Math.random() * foods.length)]
     dispatch(recommendedFoods(food))
   })
 
-  useEffect(async () => {
+  useEffect(() => {
       dispatch(retrieveParams())
+  })
+
+  useEffect(() => {
+    dispatch(foodStorage())
   })
 
   return(

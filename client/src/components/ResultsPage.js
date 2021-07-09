@@ -4,7 +4,6 @@ import { Container, Col, Row, Button, Image } from 'react-bootstrap'
 
 const ResultsPage = () => {
     const { recipe } = useSelector(state => state.food)
-    // food && console.log('food', food.recipe)
     recipe && console.log(recipe)
 
     if (!recipe) return null
@@ -12,7 +11,7 @@ const ResultsPage = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             Hi THERE RESULTS PAGE
-            {/* <Container>
+            <Container>
                 <Row>
                     <Col>
                         <Image 
@@ -39,7 +38,7 @@ const ResultsPage = () => {
                         ))}
                     </Col>
                 </Row>
-            </Container> */}
+            </Container>
 
         </div>
     )
