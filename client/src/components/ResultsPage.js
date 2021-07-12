@@ -28,8 +28,8 @@ const ResultsPage = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col style={{ margin: 'auto'}}>
-                        <Row style={{ borderBottom: "2px solid grey", width: '50%' }}>
+                    <Col style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Row style={{ borderBottom: "2px solid grey"}}>
                             <h3>{recipe.ingredientLines.length} Ingredients</h3>
                         </Row>
                         {recipe.ingredients.map((ingredient, i) => (
@@ -38,13 +38,13 @@ const ResultsPage = () => {
                             </Row>
                         ))}
                     </Col>
-                    <Col>
+                    <Col style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Row style={{ borderBottom: "2px solid grey", width: '40%' }}>
                             <h3>Nutrition</h3>
                         </Row>
                         <Row style={{ borderBottom: "1px solid black", width: '40%'}}>
                             <Col>
-                                {recipe.calories/recipe.yield}
+                                {Math.round((recipe.calories/recipe.yield) * 100) / 100}
                                 <p>CALORIES/SERVING</p>
                             </Col>
                             <Col>
