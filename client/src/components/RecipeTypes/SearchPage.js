@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 
 const SearchPage = () => {
-    const recipes = useSelector(state => state.recipes)
-    console.log('search', recipes)
+    const food = useSelector(state => state.food)
+    console.log('search', food)
 
 
     return (
         <Container>
             <Row>
-                {recipes.hits && recipes.hits.map(({recipe}) =>
+                {food.hits && food.hits.map(({recipe}) =>
                     <Col xs={6} md={4} key={recipe.label}>
                         <Col>
                             <Card style={{ width: '18rem', marginBottom: '5%'  }}>

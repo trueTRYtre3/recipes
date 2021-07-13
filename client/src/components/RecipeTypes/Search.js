@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Button, Col, Tabs, Tab } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { searchFood } from '../../reducers/foodReducer'
 import recipeService from '../../services/recipeService'
 
 
@@ -8,6 +10,7 @@ import recipeService from '../../services/recipeService'
 
 const Search = () => {
     const { mealType, cuisineType, dishType, health, diet } = useSelector(state => state.params)
+    const dispatch = useDispatch()
     const [key, setKey] = useState('home')
     const [query, changeQuery] = useState('')
     const [meal, changeMeal] = useState('')
@@ -17,6 +20,7 @@ const Search = () => {
     const [dietParams, changeDietParams] = useState({})
     const [show, changeShow] = useState(false)
     const style = { display: show ? '' : 'none' }
+    const history = useHistory()
 
     if (!mealType) return null
 
@@ -51,8 +55,10 @@ const Search = () => {
         }
         try {
             const data = await recipeService.getSearchFood(uri)
-            console.log(data)
+            // console.log(data)
+            dispatch(searchFood(data))
             resetStates()
+            history.push('/search')
         } catch (exception) {
             console.log(exception)
         }
