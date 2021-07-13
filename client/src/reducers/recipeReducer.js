@@ -1,17 +1,11 @@
 import recipeService from "../services/recipeService"
 
-export const getRecipes = () => {
-    return async dispatch => {
-        try {
-            const response = await recipeService.getRecipe()
-            dispatch({
-                type: 'SINGLE',
-                data: response
-            })
-        } catch (exception) {
-            console.log(exception)
-        }
-    }
+
+export const searchFoods = data => dispatch => {
+    dispatch({
+        type: 'SEARCH',
+        data: data
+    })
 }
 
 export const recommendedFoods = (item) => {
@@ -30,7 +24,7 @@ export const recommendedFoods = (item) => {
 
 const reducer = (state=[], action) => {
     switch (action.type) {
-        case 'INITIAL':
+        case 'SEARCH':
             return action.data
         case 'RECOMMEND':
             return action.data
