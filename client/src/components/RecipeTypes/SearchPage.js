@@ -16,7 +16,7 @@ const SearchPage = () => {
                             <Card style={{ width: '18rem', marginBottom: '5%'  }}>
                                 <Card.Img variant="left" src={recipe.image} />
                                 <Card.Body>
-                                    <Card.Text><h3>{recipe.label}</h3></Card.Text>
+                                    <Card.Text><strong>{recipe.label}</strong></Card.Text>
                                     <Button variant="primary">See Recipe</Button>
                                 </Card.Body>
 

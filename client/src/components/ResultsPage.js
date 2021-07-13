@@ -79,7 +79,7 @@ const ResultsPage = () => {
                             recipe.totalDaily[key] &&
                             <Row key={key} style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <Col style={{ marginLeft: '3%' }}>
-                                    <span style={{ fontWeight: 'bold'}}>{value.label}</span> {Math.round(value.quantity/recipe.yield)}{value.unit}
+                                    <strong>{value.label}</strong> {Math.round(value.quantity/recipe.yield)}{value.unit}
                                 </Col>
                                 <Col style={{ marginLeft: '30%' }}>
                                     {Math.round(recipe.totalDaily[key].quantity/recipe.yield)}%
