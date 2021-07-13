@@ -1,35 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Container, Col, Row, Button, Image } from 'react-bootstrap'
+import { Container, Col, Row, Button, Image, Modal } from 'react-bootstrap'
 
 const ResultsPage = () => {
+    const [show, setShow] = useState(false)
     const { recipe } = useSelector(state => state.food)
     recipe && console.log(recipe)
 
     if (!recipe) return null
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Container>
-                <Row style={{ marginTop: '8px', marginBottom: '16px'}}>
+        // <div>
+            <Container style={{ marginBottom: '2%', }}>
+                <Row style={{ marginTop: '8px', marginBottom: '20px'}}>
                     <Col>
                         <Image 
                             width={350}
                             height={350}
                             src={recipe.image}
                             alt={recipe.label}
-                            style={{ float: 'right', marginRight: '25px' }}
+                            style={{ float: 'right', marginRight: '10%' }}
                         />
                     </Col>
                     <Col style={{ textAlign: 'left', overflowWrap: 'break-word', inlineSize: '140px', marginTop: '40px' }}>
                         <h2>{recipe.label}</h2>
                         <Button>Save Recipe</Button>
-                        <Button style={{ display: 'block', marginTop: '5px'}} variant='success'>Get Recipe</Button>
+                        <a href={recipe.url} style={{ color: 'white', textDecoration: 'none' }}>
+                            <Button style={{ display: 'block', marginTop: '5px'}} variant='success'>Get Recipe</Button>
+                        </a>
                     </Col>
                 </Row>
-                <Row>
-                    <Col style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <Row style={{ borderBottom: "2px solid grey"}}>
+                <Row className="justify-content-md-center">
+                    <Col style={{ marginLeft: '4%', width: '90%' }}>
+                        <Row style={{ borderBottom: "1px solid grey", width: '95%' }}>
                             <h3>{recipe.ingredientLines.length} Ingredients</h3>
                         </Row>
                         {recipe.ingredients.map((ingredient, i) => (
@@ -38,24 +41,56 @@ const ResultsPage = () => {
                             </Row>
                         ))}
                     </Col>
-                    <Col style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <Row style={{ borderBottom: "2px solid grey", width: '40%' }}>
-                            <h3>Nutrition</h3>
+                    <Col style={{  marginRight: '4%', width: '90%' }}>
+                        <Row style={{ borderBottom: "1px solid grey", width: '95%', marginBottom: '8px' }}>
+                            <h3>Nutrition </h3>
                         </Row>
-                        <Row style={{ borderBottom: "1px solid black", width: '40%'}}>
+                        <Row style={{ borderBottom: "1px solid grey", width: '95%', display: 'flex', justifyContent: 'space-between', textAlign: 'center', marginBottom: '8px' }}>
                             <Col>
-                                {Math.round((recipe.calories/recipe.yield) * 100) / 100}
+                                <p style={{ marginBottom: '0px' }}>{Math.round((recipe.calories/recipe.yield)) }</p>
                                 <p>CALORIES/SERVING</p>
                             </Col>
                             <Col>
-                                <p>{recipe.yield} servings</p>
+                                <p style={{ marginBottom: '0px' }}>{recipe.yield}</p>
+                                <p>Servings</p>
+                            </Col>
+                            <Col>
+                                <Button variant="info" onClick={() => setShow(true)} style={{ marginBottom: '0px' }}>Health Labels</Button>
+                                <Modal show={show} onHide={() => setShow(false)}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Health Labels</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <ul>
+                                            {recipe.healthLabels.map(label => (
+                                                <li key={label}>{label}</li>
+                                            ))}
+                                        </ul>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={() => setShow(false)}>
+                                            Close
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
                             </Col>
                         </Row>
+                        {Object.entries(recipe.totalNutrients).map(([key,value]) =>
+                            recipe.totalDaily[key] &&
+                            <Row key={key} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <Col style={{ marginLeft: '3%' }}>
+                                    <span style={{ fontWeight: 'bold'}}>{value.label}</span> {Math.round(value.quantity/recipe.yield)}{value.unit}
+                                </Col>
+                                <Col style={{ marginLeft: '30%' }}>
+                                    {Math.round(recipe.totalDaily[key].quantity/recipe.yield)}%
+                                </Col>
+                            </Row> 
+                        )}
                     </Col>
                 </Row>
             </Container>
 
-        </div>
+        // </div>
     )
 }
 
