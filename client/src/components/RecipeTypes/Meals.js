@@ -10,7 +10,7 @@ const Meals = () => {
             <h2>Different Meals</h2>
             <p>~Choose one meal type~</p>
             <br />
-            {mealType && <Grid>{mealType}</Grid>}
+            {mealType && <Grid uri={'&mealType='}>{mealType}</Grid>}
         </div>
     )
 }

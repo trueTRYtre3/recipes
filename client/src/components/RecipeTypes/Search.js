@@ -55,7 +55,6 @@ const Search = () => {
         }
         try {
             const data = await recipeService.getSearchFood(uri)
-            // console.log(data)
             dispatch(searchFood(data))
             resetStates()
             history.push('/search')

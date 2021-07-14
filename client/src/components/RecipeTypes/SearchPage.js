@@ -10,8 +10,8 @@ const SearchPage = () => {
     return (
         <Container>
             <Row>
-                {food.hits && food.hits.map(({recipe}) =>
-                    <Col xs={6} md={4} key={recipe.label}>
+                {food.hits && food.hits.map(({recipe}, el) =>
+                    <Col xs={6} md={4} key={el}>
                         <Col>
                             <Card style={{ width: '18rem', marginBottom: '5%'  }}>
                                 <Card.Img variant="left" src={recipe.image} />

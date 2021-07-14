@@ -10,7 +10,7 @@ const Cuisines = () => {
             <h2>Different Cuisines</h2>
             <p>~Choose one cuisine type~</p>
             <br />
-            {cuisineType && <Grid>{cuisineType}</Grid>}
+            {cuisineType && <Grid uri={'&cuisineType='}>{cuisineType}</Grid>}
         </div>
     );
 }
