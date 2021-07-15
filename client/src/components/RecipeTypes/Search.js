@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form, Button, Col, Tabs, Tab } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { searchFood } from '../../reducers/foodReducer'
+import { initialPage } from '../../reducers/paginationReducer'
 import recipeService from '../../services/recipeService'
 
 
@@ -55,7 +55,7 @@ const Search = () => {
         }
         try {
             const data = await recipeService.getSearchFood(uri)
-            dispatch(searchFood(data))
+            dispatch(initialPage(data))
             resetStates()
             history.push('/search')
         } catch (exception) {

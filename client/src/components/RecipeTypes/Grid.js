@@ -1,22 +1,20 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import recipeService from '../../services/recipeService'
 import { Button, Container, Row, Col } from 'react-bootstrap'
-import { searchFood } from '../../reducers/foodReducer'
+import { initialPage } from '../../reducers/paginationReducer'
+import recipeService from '../../services/recipeService'
 
 const Grid = (props) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const sendQuery = async (type) => {
-        console.log(props.uri + type)
         try {
             let uri = props.uri + type
             const data = await recipeService.getSearchFood(uri)
-            console.log('type', data)
-            dispatch(searchFood(data))
             history.push('/search')
+            dispatch(initialPage(data))
         } catch(exception) {
             console.log(exception)
         }
