@@ -12,8 +12,8 @@ import Dishes from './components/RecipeTypes/Dishes';
 import Meals from './components/RecipeTypes/Meals';
 import ResultsPage from './components/ResultsPage';
 import SearchPage from './components/RecipeTypes/SearchPage';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
 
