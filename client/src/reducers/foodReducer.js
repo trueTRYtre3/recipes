@@ -19,23 +19,11 @@ export const foodStorage = () => dispatch => {
     }
 }
 
-export const searchFood = (data) => dispatch => {
-    window.localStorage.setItem(
-        'foodItem', JSON.stringify(data)
-    )
-    dispatch({
-        type: 'SEARCH',
-        data: data
-    })
-}
-
 const reducer = (state='', action) => {
     switch (action.type) {
         case 'FOOD':
             return action.data
         case 'STORED':
-            return action.data
-        case 'SEARCH':
             return action.data
         default:
             return state
