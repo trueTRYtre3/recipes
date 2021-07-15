@@ -9,9 +9,8 @@ const Main = () => {
     const dispatch = useDispatch()
 
     const recipes = useSelector(state => state.recipes)
-
-    console.log('recipes', recipes)
     let recommendedRecipe = recipes.hits ? recipes.hits.slice(0,4) : undefined
+    console.log('recipes', recommendedRecipe)
 
 
 
@@ -20,21 +19,21 @@ const Main = () => {
             <h1 style={{ marginBottom: '1%'}}>Fun food recommendations</h1>
             <Carousel style={{ display: 'block', marginBottom: '1%', marginLeft: 'auto', marginRight: 'auto', width: '80%', borderStyle: '' }}>
                 {recommendedRecipe && 
-                recommendedRecipe.map(el => (
-                    <Carousel.Item key={el.recipe.label}>
+                recommendedRecipe.map(({recipe}) => (
+                    <Carousel.Item key={recipe.label}>
                         <Row>
                             <Col>
                                 <Image
-                                    src={el.recipe.image}
-                                    alt={el.recipe.label} 
+                                    src={recipe.image}
+                                    alt={recipe.label} 
                                     fluid
                                     style={{ width: '360px' }}
                                 />
                             </Col>
                             <Col 
                                 style={{ textAlign: 'left', overflowWrap: 'break-word', inlineSize: '150px', marginTop: '40px' }}>
-                                    <h2>{el.recipe.label}</h2>
-                                    <Button onClick={() => dispatch(grabFood(el))} as={Link} to='/food'>
+                                    <h2>{recipe.label}</h2>
+                                    <Button onClick={() => dispatch(grabFood(recipe))} as={Link} to='/food'>
                                         See Recipe
                                     </Button>
                             </Col>
