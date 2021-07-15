@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { retrieveParams } from './reducers/recipeParamsReducer';
 import { recommendedFoods  } from './reducers/recipeReducer';
 import { foodStorage } from './reducers/foodReducer';
+import { searchPageInitialized } from './reducers/paginationReducer';
 import Header from './components/Header'
 import Main from './components/Main'
 import Cuisines from './components/RecipeTypes/Cuisines';
@@ -13,6 +14,7 @@ import ResultsPage from './components/ResultsPage';
 import SearchPage from './components/RecipeTypes/SearchPage';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const App = () => {
@@ -30,6 +32,10 @@ const App = () => {
 
   useEffect(() => {
     dispatch(foodStorage())
+  })
+
+  useEffect(() => {
+    dispatch(searchPageInitialized())
   })
 
   return(
