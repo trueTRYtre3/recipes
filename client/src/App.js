@@ -12,8 +12,11 @@ import Dishes from './components/RecipeTypes/Dishes';
 import Meals from './components/RecipeTypes/Meals';
 import ResultsPage from './components/ResultsPage';
 import SearchPage from './components/RecipeTypes/SearchPage';
+import SignUp from './components/User/SignUp';
+import Login from './components/User/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 
 
 
@@ -50,6 +53,8 @@ const App = () => {
           <Route path='/dishes' component={Dishes} />
           <Route path='/food' component={ResultsPage} />
           <Route path='/search' component={SearchPage} />
+          <Route path='/login' component={Login} />
+          <Route path="/register" component={SignUp} />
         </Switch>
       </div>
     </div>
