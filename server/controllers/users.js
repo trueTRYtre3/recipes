@@ -3,8 +3,8 @@ const userRouter = require('express').Router()
 const { userExtractor } = require('../utils/middleware')
 const User = require('../models/user')
 
-userRouter.get('/', async (request, response) => {
-    const user = await User.find({}).populate('recipes')
+userRouter.get('/:id', async (request, response) => {
+    const user = await User.findById(request.params.id)
     response.json(user)
 })
 
