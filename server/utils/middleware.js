@@ -47,7 +47,7 @@ const errorHandler = (error,request, response, next) => {
         })
     }
 
-    logger.error(error.message)
+    logger.errors(error.message)
 
     next(error)
 }
