@@ -27,7 +27,7 @@ userRouter.post('/', async (request, response) => {
     }
 })
 
-userRouter.post('/saved', userExtractor, async (request, response) => {
+userRouter.post('/:id/recipe', userExtractor, async (request, response) => {
     const savedRecipe = await User.findById(request.params.id)
     savedRecipe.recipes = savedRecipes.recipes.concat(request.body.recipe)
     const save = await savedRecipe.save()
