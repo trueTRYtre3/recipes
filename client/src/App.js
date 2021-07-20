@@ -16,6 +16,7 @@ import SignUp from './components/User/SignUp';
 import Login from './components/User/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { isLogged } from './reducers/userReducer';
 
 
 
@@ -27,19 +28,15 @@ const App = () => {
   useEffect(() => {
     let food = foods[Math.floor(Math.random() * foods.length)]
     dispatch(recommendedFoods(food))
-  })
+  }, [])
 
   useEffect(() => {
       dispatch(retrieveParams())
-  })
+      dispatch(foodStorage())
+      dispatch(searchPageInitialized())
+      dispatch(isLogged())
+  }, [])
 
-  useEffect(() => {
-    dispatch(foodStorage())
-  })
-
-  useEffect(() => {
-    dispatch(searchPageInitialized())
-  })
 
   return(
     <div>
