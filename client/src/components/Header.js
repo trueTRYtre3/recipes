@@ -25,7 +25,7 @@ const Header = () => {
                 {user 
                 ? <Nav>
                     <NavDropdown title={user.username} id="basic-nav-dropdown" alignRight>
-                        <NavDropdown.Item href="#action/3.3">Account</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to='/user'>Account</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item onClick={() => dispatch(handleLogout())} >Logout</NavDropdown.Item>
                     </NavDropdown>

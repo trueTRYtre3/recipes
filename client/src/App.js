@@ -14,6 +14,7 @@ import ResultsPage from './components/ResultsPage';
 import SearchPage from './components/RecipeTypes/SearchPage';
 import SignUp from './components/User/SignUp';
 import Login from './components/User/Login';
+import UserPage from './components/User/UserPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { isLogged } from './reducers/userReducer';
@@ -51,7 +52,8 @@ const App = () => {
           <Route path='/food' component={ResultsPage} />
           <Route path='/search' component={SearchPage} />
           <Route path='/login' component={Login} />
-          <Route path="/register" component={SignUp} />
+          <Route path='/register' component={SignUp} />
+          <Route path='/user' component={UserPage} />
         </Switch>
       </div>
     </div>
