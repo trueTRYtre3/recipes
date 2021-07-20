@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from 'react-router';
@@ -12,6 +12,14 @@ const Login = () => {
     const username = useField('text')
     const password = useField('password')
     const [show, changeShow] = useState(false)
+
+    useEffect(() => {
+        let time = setTimeout(() => {
+            changeShow(false)
+        }, 5000)
+
+        return () => clearTimeout(time)
+    })
 
     const alert = {
         display: show ? '' : 'none',
@@ -42,9 +50,6 @@ const Login = () => {
         } catch (exception) {
             console.log(exception)
             changeShow(true)
-            setTimeout(() => {
-                changeShow(false)
-            }, 5000)
         }
     }
 

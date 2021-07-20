@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from 'react-router';
@@ -14,6 +14,14 @@ const SignUp = () => {
     const password = useField('password')
     const checkPassword = useField('password')
     const [alert, changeAlert] = useState('')
+
+    useEffect(() => {
+        let time = setTimeout(() => {
+            changeAlert('')
+        }, 5000)
+
+        return () => clearTimeout(time)
+    }, [alert])
 
     const style = {
         textAlign: 'center',
@@ -47,16 +55,10 @@ const SignUp = () => {
                 reset()
             } catch (exception) {
                 console.log(exception)
-                changeAlert('invalid username or password')
-                setTimeout(() => {
-                    changeAlert('')
-                }, 5000)
+                changeAlert('invalid username or password')    
             }
         } else {
-            changeAlert('passwords do not match')
-            setTimeout(() => {
-                changeAlert('')
-            }, 5000)
+            changeAlert('passwords do not match')    
         }
     }
 
