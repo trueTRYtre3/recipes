@@ -27,9 +27,9 @@ const addComment = async (id, recipe) => {
 
 const deleteUser = async id => {
     const config = {
-        headers: { authorization: token }
+        headers: { Authorization: token }
     }
-    const response = await axios.delete(`${baseURL}/${id}`)
+    const response = await axios.delete(`${baseURL}/${id}`, config)
     console.log(response)
     return response
 }
