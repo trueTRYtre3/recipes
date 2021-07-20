@@ -53,7 +53,7 @@ const SearchPage = () => {
             <Pagination size="lg" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2%', marginTop: '2%' }}>
                 <Pagination.First onClick={firstClick} />
                 <Pagination.Prev onClick={previousClick} />
-                <Pagination.Next onClick={nextClick} />
+                {page._links.next &&  <Pagination.Next onClick={nextClick} />}
             </Pagination>
         </div>
     )
