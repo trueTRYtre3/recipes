@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import { useField } from '../../hooks/custom';
 import loginService from '../../services/loginService';
 import userService from '../../services/userService';
-import { handleLogin } from '../../reducers/userReducer';
+import { handleLogin } from '../../reducers/loginReducer';
 
 const SignUp = () => {
     const history = useHistory()
