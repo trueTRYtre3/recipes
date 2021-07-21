@@ -5,8 +5,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { handleLogout } from '../reducers/loginReducer'
 
 const Header = () => {
-    const user = useSelector(state => state.user)
-    console.log('user', user)
+    const login = useSelector(state => state.login)
     const dispatch = useDispatch()
 
     return (
@@ -22,9 +21,9 @@ const Header = () => {
                         <NavDropdown.Item as={Link} to='/dishes'>Dishes</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
-                {user 
+                {login 
                 ? <Nav>
-                    <NavDropdown title={user.username} id="basic-nav-dropdown" alignRight>
+                    <NavDropdown title={login.username} id="basic-nav-dropdown" alignRight>
                         <NavDropdown.Item as={Link} to='/user'>Account</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item onClick={() => dispatch(handleLogout())} >Logout</NavDropdown.Item>

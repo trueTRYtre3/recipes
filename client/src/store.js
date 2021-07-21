@@ -6,13 +6,15 @@ import recipeReducer from './reducers/recipeReducer'
 import foodReducer from "./reducers/foodReducer"
 import pageReducer from './reducers/paginationReducer'
 import loginReducer from './reducers/loginReducer'
+import userReducer from './reducers/userReducer'
 
 const reducer = combineReducers({
     params: paramsReducer,
     recipes: recipeReducer,
     food: foodReducer,
     page: pageReducer,
-    login: loginReducer
+    login: loginReducer,
+    user: userReducer
 })
 
 const store = createStore(

@@ -7,9 +7,8 @@ const setToken = newToken => {
     token = `bearer ${newToken}`
 }
 
-const getAll = async () => {
-    const response = await axios.get(baseURL)
-    console.log(response)
+const getUser = async (id) => {
+    const response = await axios.get(`${baseURL}/${id}`)
     return response.data
 }
 
@@ -35,4 +34,4 @@ const deleteUser = async id => {
 }
 
 
-export default { setToken, getAll, createUser, addComment, deleteUser }
+export default { setToken, getUser, createUser, addComment, deleteUser }

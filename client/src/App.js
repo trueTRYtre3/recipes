@@ -5,6 +5,8 @@ import { retrieveParams } from './reducers/recipeParamsReducer';
 import { recommendedFoods  } from './reducers/recipeReducer';
 import { foodStorage } from './reducers/foodReducer';
 import { searchPageInitialized } from './reducers/paginationReducer';
+import { isLogged } from './reducers/loginReducer';
+import { userExists } from './reducers/userReducer';
 import Header from './components/Header'
 import Main from './components/Main'
 import Cuisines from './components/RecipeTypes/Cuisines';
@@ -17,9 +19,6 @@ import Login from './components/User/Login';
 import UserPage from './components/User/UserPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { isLogged } from './reducers/userReducer';
-
-
 
 
 const App = () => {
@@ -36,6 +35,7 @@ const App = () => {
       dispatch(foodStorage())
       dispatch(searchPageInitialized())
       dispatch(isLogged())
+      dispatch(userExists())
   }, [])
 
 

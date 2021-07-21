@@ -1,10 +1,12 @@
 import userService from '../services/userService'
+import { userPage, userEnd } from './userReducer'
 
 export const handleLogin = loginObj => dispatch => {
     userService.setToken(loginObj.token)
     window.localStorage.setItem(
         'loggedRecipeUser', JSON.stringify(loginObj)
     )
+    dispatch(userPage(loginObj.id))
     dispatch({
         type: 'LOGIN',
         data: loginObj
@@ -25,6 +27,7 @@ export const isLogged = () => dispatch => {
 
 export const handleLogout = () => dispatch => {
     window.localStorage.removeItem('loggedRecipeUser')
+    dispatch(userEnd())
     dispatch({
         type: 'LOGOUT',
         data: null
