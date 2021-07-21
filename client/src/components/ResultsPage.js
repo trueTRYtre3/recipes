@@ -1,13 +1,25 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Container, Col, Row, Button, Image, Modal } from 'react-bootstrap'
+import { addRecipes } from '../reducers/userReducer'
 
 const ResultsPage = () => {
     const [show, setShow] = useState(false)
+    const dispatch = useDispatch()
     const recipe = useSelector(state => state.food)
+    const user = useSelector(state => state.user)
+
     recipe && console.log(recipe)
+    user && console.log('user', user)
 
     if (!recipe) return null
+
+    const addRecipe = () => {
+        if (user.id) {
+            console.log(4)
+            dispatch(addRecipes(user.id, { recipe }))
+        }
+    }
 
     return (
         <Container style={{ marginBottom: '2%', }}>
@@ -23,7 +35,10 @@ const ResultsPage = () => {
                 </Col>
                 <Col style={{ textAlign: 'left', overflowWrap: 'break-word', inlineSize: '140px', marginTop: '40px' }}>
                     <h2>{recipe.label}</h2>
-                    <Button>Save Recipe</Button>
+                    {user.recipes && user.recipes.some(el => el.shareAs === recipe.shareAs) 
+                        ? <Button>Saved</Button>
+                        : <Button onClick={addRecipe}>Save Recipe</Button>
+                    }
                     <a href={recipe.url} style={{ color: 'white', textDecoration: 'none' }}>
                         <Button style={{ display: 'block', marginTop: '5px'}} variant='success'>Get Recipe</Button>
                     </a>

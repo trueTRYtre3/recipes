@@ -19,8 +19,11 @@ const createUser = async newObject => {
 }
 
 const addComment = async (id, recipe) => {
-    const response = await axios.post(`${baseURL}/${id}/recipe`, recipe)
-    console.log(response)
+    const config = {
+        headers: { Authorization: token }
+    }
+    const response = await axios.post(`${baseURL}/${id}/recipe`, recipe, config)
+    console.log('response', response)
     return response.data
 }
 

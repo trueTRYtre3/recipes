@@ -22,6 +22,17 @@ export const userExists = () => dispatch => {
     }
 }
 
+export const addRecipes = (id, recipeObj) => async dispatch => {
+    const recipe = await userService.addComment(id, recipeObj)
+    window.localStorage.setItem(
+        'userPage', JSON.stringify(recipe)
+    )
+    dispatch({
+        type: 'ADD_RECIPE',
+        data: recipe
+    })
+}
+
 export const userEnd = () => dispatch => {
     window.localStorage.removeItem('userPage')
     dispatch({
@@ -30,14 +41,16 @@ export const userEnd = () => dispatch => {
     })
 }
 
-const reducer = (state=[], action) => {
+const reducer = (state={}, action) => {
     switch (action.type) {
         case 'USER':
+            return action.data
+        case 'ADD_RECIPE':
             return action.data
         case 'EXISTING_USER':
             return action.data
         case 'END':
-            return []
+            return {}
         default:
             return state
     }
