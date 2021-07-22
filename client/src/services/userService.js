@@ -30,7 +30,6 @@ const deleteRecipe = async (id, user) => {
         headers: { Authorization: token }
     }
     const response = await axios.put(`${baseURL}/${id}/recipe`, user, config)
-    console.log(response)
     return response.data
 }
 
@@ -39,6 +38,7 @@ const deleteUser = async id => {
         headers: { Authorization: token }
     }
     const response = await axios.delete(`${baseURL}/${id}`, config)
+    console.log(response)
     return response
 }
 
