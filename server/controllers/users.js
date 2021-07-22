@@ -5,7 +5,7 @@ const User = require('../models/user')
 
 userRouter.get('/:id', async (request, response) => {
     const user = await User.findById(request.params.id)
-    response.json(user)
+    user ? response.json(user) : response.status(404).end()
 })
 
 userRouter.post('/', async (request, response) => {
@@ -32,6 +32,18 @@ userRouter.post('/:id/recipe', userExtractor, async (request, response) => {
     savedRecipe.recipes = savedRecipe.recipes.concat(request.body.recipe)
     const save = await savedRecipe.save()
     response.json(save)
+})
+
+userRouter.put('/:id/recipe', userExtractor, async (request, response) => {
+    const { username, recipes } = request.body
+
+    const newUser = {
+        username,
+        recipes
+    }
+    console.log(newUser)
+    const updatedUser = await User.findByIdAndUpdate(request.params.id, newUser, { new: true })
+    response.json(updatedUser)
 })
 
 

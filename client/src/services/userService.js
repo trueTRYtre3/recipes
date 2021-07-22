@@ -14,16 +14,23 @@ const getUser = async (id) => {
 
 const createUser = async newObject => {
     const response = await axios.post(baseURL, newObject)
-    console.log(response)
     return response.data
 }
 
-const addComment = async (id, recipe) => {
+const addRecipe = async (id, recipe) => {
     const config = {
         headers: { Authorization: token }
     }
     const response = await axios.post(`${baseURL}/${id}/recipe`, recipe, config)
-    console.log('response', response)
+    return response.data
+}
+
+const deleteRecipe = async (id, user) => {
+    const config = {
+        headers: { Authorization: token }
+    }
+    const response = await axios.put(`${baseURL}/${id}/recipe`, user, config)
+    console.log(response)
     return response.data
 }
 
@@ -32,9 +39,8 @@ const deleteUser = async id => {
         headers: { Authorization: token }
     }
     const response = await axios.delete(`${baseURL}/${id}`, config)
-    console.log(response)
     return response
 }
 
 
-export default { setToken, getUser, createUser, addComment, deleteUser }
+export default { setToken, getUser, createUser, addRecipe, deleteRecipe, deleteUser }

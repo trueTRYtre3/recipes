@@ -23,13 +23,24 @@ export const userExists = () => dispatch => {
 }
 
 export const addRecipes = (id, recipeObj) => async dispatch => {
-    const recipe = await userService.addComment(id, recipeObj)
+    const recipe = await userService.addRecipe(id, recipeObj)
     window.localStorage.setItem(
         'userPage', JSON.stringify(recipe)
     )
     dispatch({
         type: 'ADD_RECIPE',
         data: recipe
+    })
+}
+
+export const deleteRecipes = (id, userObj) => async dispatch => {
+    const user = await userService.deleteRecipe(id, userObj)
+    window.localStorage.setItem(
+        'userPage', JSON.stringify(user)
+    )
+    dispatch({
+        type: 'DELETE_RECIPE',
+        data: user
     })
 }
 
@@ -48,6 +59,8 @@ const reducer = (state={}, action) => {
         case 'ADD_RECIPE':
             return action.data
         case 'EXISTING_USER':
+            return action.data
+        case 'DELETE_RECIPE':
             return action.data
         case 'END':
             return {}
