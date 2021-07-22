@@ -19,7 +19,6 @@ const UserPage = () => {
             <h2 style={{ textAlign: 'center' }}>No User Signed In</h2>
         )
     }
-    console.log('user', user)
 
     const deleteRecipe = (recipe) => {
         const filterRecipe = user.recipes.filter(el => el.shareAs !== recipe.shareAs)
@@ -66,7 +65,7 @@ const UserPage = () => {
             )}
             </Container>
             <Button variant="danger" 
-            style={{ bottom: '1%', marginTop: '4%', marginBottom: '1%' }} 
+            style={{ bottom: '1px', marginTop: '4%', marginBottom: '1%' }} 
             onClick={() => setShow(true)}
             >
                 Delete Account
